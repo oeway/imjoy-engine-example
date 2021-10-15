@@ -12,7 +12,7 @@ pip install -r requirements.txt
 
 In a terminal, you can start the server by running
 ```
-python -m imjoy.server --host=0.0.0.0 --port=8000 -enable-server-apps --allow-origin=* --allow-origin=https://lib.imjoy.io
+python -m imjoy.server --host=0.0.0.0 --port=8000 -enable-server-apps --allow-origin=https://lib.imjoy.io
 ```
 Note that you should keep this terminal running all the time, 
 so maybe run the above command using virtual command tools such as `screen`.
