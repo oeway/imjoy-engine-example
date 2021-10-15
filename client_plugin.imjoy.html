@@ -1,0 +1,65 @@
+<config lang="json">
+{
+    "name": "Test Client",
+    "type": "window",
+    "tags": [],
+    "ui": "",
+    "version": "0.1.0",
+    "cover": "",
+    "description": "[TODO: describe this plugin with one sentence.]",
+    "icon": "extension",
+    "inputs": null,
+    "outputs": null,
+    "api_version": "0.1.8",
+    "env": "",
+    "permissions": [],
+    "requirements": [],
+    "dependencies": [],
+    "defaults": {"w": 20, "h": 10}
+}
+</config>
+
+<script lang="javascript">
+
+
+class ImJoyPlugin {
+    async setup() {
+    await api.log('initialized')
+    window.connect = async function(){
+        const ws = await api.connectToServer({
+            name: "client-plugin",
+            server_url: document.getElementById("server_url").value,
+            workspace: document.getElementById("workspace").value,
+            token: document.getElementById("token").value,
+            server_token: document.getElementById("token").value,
+        })
+        const plugin = await ws.getPlugin("example_plugin")
+        window.execute = async function (){
+            const result = await plugin.echo(123)
+            alert(result)
+        }
+    }
+    }
+
+    async run(ctx) {
+    
+    }
+}
+
+api.export(new ImJoyPlugin())
+</script>
+
+<window lang="html">
+    <div>
+    Server URL: <input id="server_url" value="http://127.0.0.1:8000">
+    Workspace: <input id="workspace">
+    Token: <input id="token">
+    <br>
+    <button onclick="connect()">Connect</button>
+    <button onclick="execute()">Execute Run</button>
+    </div>
+</window>
+
+<style lang="css">
+
+</style>

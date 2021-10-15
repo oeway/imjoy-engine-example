@@ -1,5 +1,6 @@
 """Provide an example plugin."""
 from imjoy_rpc import api
+
 # pylint: disable=no-self-use
 
 
