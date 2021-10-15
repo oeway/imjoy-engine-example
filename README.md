@@ -66,7 +66,7 @@ class ImJoyPlugin {
             server_token: document.getElementById("token").value,
         })
         const plugin = await ws.getPlugin("example_plugin")
-        window.execute = function (){
+        window.execute = async function (){
             const result = await plugin.echo(123)
             alert(result)
         }
