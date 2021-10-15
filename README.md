@@ -12,7 +12,7 @@ pip install -r requirements.txt
 
 In a terminal, you can start the server by running
 ```
-python -m imjoy.server --host=0.0.0.0 --port=8000
+python -m imjoy.server --host=0.0.0.0 --port=8000 -enable-server-apps --allow-origin=* --allow-origin=https://lib.imjoy.io
 ```
 Note that you should keep this terminal running all the time, 
 so maybe run the above command using virtual command tools such as `screen`.
@@ -63,11 +63,13 @@ class ImJoyPlugin {
             server_url: document.getElementById("server_url").value,
             workspace: document.getElementById("workspace").value,
             token: document.getElementById("token").value,
+            server_token: document.getElementById("token").value,
         })
         const plugin = await ws.getPlugin("example_plugin")
-        //plugin.run_macro()
-        const result = await plugin.echo(123)
-        alert(result)
+        window.execute = function (){
+            const result = await plugin.echo(123)
+            alert(result)
+        }
     }
   }
 
